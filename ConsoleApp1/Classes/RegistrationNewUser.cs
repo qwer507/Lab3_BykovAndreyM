@@ -4,31 +4,41 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using ConsoleApp1.Models;
 using Serilog;
 
 namespace ConsoleApp1.Classes
 {
     public static class RegistrationNewUser
     {
-        public static List<String> RegisterUser(string? login, string? password, string? passwordRepeat)
+        public static Registration RegisterUser(string? login, string? password, string? passwordRepeat)
         {
             string maskedPassword = PasswordHasher.MaskPassword(password);
             string maskedPasswordRepeat = PasswordHasher.MaskPassword(passwordRepeat);
-            string error = CheckRegInfo(login, password, passwordRepeat);
+            string? error = CheckRegInfo(login, password, passwordRepeat);
+
+            Registration newReg = new Registration() {
+                RLogin = login,
+                RPassword = password,
+                RRepeatPassword = passwordRepeat,
+                RResult = false,
+                RErrorMessage = error
+            };
 
             if (string.IsNullOrEmpty(error))
             {
                 Log.Information("Логин: {Login} | Пароль: {Password} | Подтверждение: {ConfirmPassword} | Успешная регистрация", login, maskedPassword, maskedPasswordRepeat);
-                return ["True", error];
+                newReg.RResult = true;
             }
             else
             {
                 Log.Information("Логин: {Login} | Пароль: {Password} | Подтверждение: {ConfirmPassword} | Успешная регистрация", login, maskedPassword, maskedPasswordRepeat);
-                return ["False", error];
             }
+
+            return newReg;
         }
 
-        private static string CheckRegInfo(string? login, string? password, string? passwordRepeat)
+        private static string? CheckRegInfo(string? login, string? password, string? passwordRepeat)
         {
             string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             string phonePattern = @"^\+[1-9]\d{0,2}-\d{3}-\d{3}-\d{4}$";
@@ -76,7 +86,7 @@ namespace ConsoleApp1.Classes
             if (!password.Equals(passwordRepeat))
                 return "Введены разные пароли.";
 
-            return "";
+            return null;
         }
     }
 }

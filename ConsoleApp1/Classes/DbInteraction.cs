@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.Classes
 {
-    internal class DbInteraction
+    public class DbInteraction
     {
         Bykov2307a2TechContext _context = new Bykov2307a2TechContext();
-        public Registration? GetRegInfo(string login, string password, string repeatPassword)
+        public Registration? GetRegInfo(string? login, string? password, string? repeatPassword)
         {
             List<Registration> allRegInfo = _context.Registrations.ToList();
             return allRegInfo.FirstOrDefault(x => x.RLogin.Equals(login) && x.RPassword.Equals(password) && x.RRepeatPassword.Equals(repeatPassword));

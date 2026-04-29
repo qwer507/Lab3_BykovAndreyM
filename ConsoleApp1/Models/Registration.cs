@@ -7,11 +7,11 @@ public partial class Registration
 {
     public int RId { get; set; }
 
-    public string RLogin { get; set; } = null!;
+    public string? RLogin { get; set; }
 
-    public string RPassword { get; set; } = null!;
+    public string? RPassword { get; set; }
 
-    public string RRepeatPassword { get; set; } = null!;
+    public string? RRepeatPassword { get; set; }
 
     public bool RResult { get; set; }
 

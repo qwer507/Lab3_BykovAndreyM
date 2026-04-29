@@ -9,7 +9,7 @@ namespace ConsoleApp1.Classes
 {
     public class OtherProgramInteraction : IOtherProgramInteraction
     {
-        public void SendRegInfoToEmail(string login, string password)
+        public void SendRegInfoToEmail(string? errorMessage)
         {
             Thread.Sleep(1000);
         }

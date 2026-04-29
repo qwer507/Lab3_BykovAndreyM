@@ -8,6 +8,6 @@ namespace ConsoleApp1.Interfaces
 {
     interface IOtherProgramInteraction
     {
-        void SendRegInfoToEmail(string login, string password);
+        void SendRegInfoToEmail(string? errorMessage);
     }
 }
