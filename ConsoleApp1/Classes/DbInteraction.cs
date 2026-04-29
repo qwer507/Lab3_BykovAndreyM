@@ -13,7 +13,7 @@ namespace ConsoleApp1.Classes
         public Registration? GetRegInfo(string? login, string? password, string? repeatPassword)
         {
             List<Registration> allRegInfo = _context.Registrations.ToList();
-            return allRegInfo.FirstOrDefault(x => x.RLogin.Equals(login) && x.RPassword.Equals(password) && x.RRepeatPassword.Equals(repeatPassword));
+            return allRegInfo.FirstOrDefault(x => x.RLogin.Equals(login) && x.RPassword.Equals(PasswordHasher.MaskPassword(password)) && x.RRepeatPassword.Equals(PasswordHasher.MaskPassword(repeatPassword)));
         }
 
         public void AddNewRegInfo(Registration regInfo)

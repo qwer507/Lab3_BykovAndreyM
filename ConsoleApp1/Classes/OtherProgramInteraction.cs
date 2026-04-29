@@ -11,9 +11,9 @@ namespace ConsoleApp1.Classes
     public class OtherProgramInteraction : IOtherProgramInteraction
     {
         // имитация передачи ошибки на отдельный сервис
-        public void SendRegInfoToEmail(string? errorMessage)
+        public void SendRegInfoToErrorService(string? errorMessage)
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Log.Information("Данные отправлены");
         }
     }

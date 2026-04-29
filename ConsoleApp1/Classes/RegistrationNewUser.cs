@@ -32,7 +32,7 @@ namespace ConsoleApp1.Classes
             }
             else
             {
-                Log.Information("Логин: {Login} | Пароль: {Password} | Подтверждение: {ConfirmPassword} | Успешная регистрация", login, maskedPassword, maskedPasswordRepeat);
+                Log.Error("Логин: {Login} | Пароль: {Password} | Подтверждение: {ConfirmPassword} | Ошибка: {Error}", login, maskedPassword, maskedPasswordRepeat, error);
             }
 
             return newReg;

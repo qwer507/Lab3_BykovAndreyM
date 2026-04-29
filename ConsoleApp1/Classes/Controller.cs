@@ -20,10 +20,12 @@ namespace ConsoleApp1.Classes
             if (newRegInfo == null)
             {
                 newRegInfo = RegistrationNewUser.RegisterUser(inputData[0], inputData[1], inputData[2]);
+                // сохраняем новые данные о регистрации
+                dbInteraction.AddNewRegInfo(newRegInfo);
             }
 
-            // асинхронная отправка данных
-            Task.Run(() => otherProgramInteraction.SendRegInfoToEmail(newRegInfo.RErrorMessage));
+            // отправка данных
+            otherProgramInteraction.SendRegInfoToEmail(newRegInfo.RErrorMessage);
 
             return newRegInfo.RResult;
         }
