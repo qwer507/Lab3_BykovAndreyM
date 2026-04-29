@@ -22,6 +22,7 @@ namespace ConsoleApp1.Classes
                 newRegInfo = RegistrationNewUser.RegisterUser(inputData[0], inputData[1], inputData[2]);
             }
 
+            // асинхронная отправка данных
             Task.Run(() => otherProgramInteraction.SendRegInfoToEmail(newRegInfo.RErrorMessage));
 
             return newRegInfo.RResult;

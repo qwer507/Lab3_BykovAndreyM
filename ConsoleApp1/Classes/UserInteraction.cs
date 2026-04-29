@@ -9,6 +9,7 @@ namespace ConsoleApp1.Classes
 {
     public class UserInteraction : IUserInteraction
     {
+        // Возвращает массив, где первый - логин, второй - пароль, третий - повторение пароля
         public List<string?> GetRegData()
         {
 

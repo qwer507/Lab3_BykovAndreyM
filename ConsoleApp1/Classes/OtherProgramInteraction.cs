@@ -1,4 +1,5 @@
 ﻿using ConsoleApp1.Interfaces;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,11 @@ namespace ConsoleApp1.Classes
 {
     public class OtherProgramInteraction : IOtherProgramInteraction
     {
+        // имитация передачи ошибки на отдельный сервис
         public void SendRegInfoToEmail(string? errorMessage)
         {
             Thread.Sleep(1000);
+            Log.Information("Данные отправлены");
         }
     }
 }
