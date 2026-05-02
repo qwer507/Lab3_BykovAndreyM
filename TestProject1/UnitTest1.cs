@@ -19,7 +19,7 @@ namespace TestProject1
         [SetUp]
         public void SetUp()
         {
-            // Èñïîëüçóåì óíèêàëüíîå èìÿ ÁÄ äëÿ êàæäîãî òåñòà
+            // Используем уникальное имя БД для каждого теста
             var options = new DbContextOptionsBuilder<Bykov2307a2TechContext>()
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
@@ -36,7 +36,7 @@ namespace TestProject1
             _context.Dispose();
         }
 
-        [TestCase("qwertyu", "Éôûâàûâô1!", "Éôûâàûâô1!")]
+        [TestCase("qwertyu", "Йфываывф1!", "Йфываывф1!")]
         public void RegistrationUser_ValidData(string? login, string? pass, string? passR)
         {
             // Arrange
@@ -54,7 +54,7 @@ namespace TestProject1
             Assert.IsNull(savedUser.RErrorMessage);
         }
 
-        [TestCase("qwertyu", "Éôûâàûâô1!", "Éôûâàûâô1!", true, null)]
+        [TestCase("qwertyu", "Йфываывф1!", "Йфываывф1!", true, null)]
         public void RegistrationUser_ExistingLogin(string? login, string? pass, string? passR, bool rst, string? errorM)
         {
             // Arrange
@@ -80,7 +80,7 @@ namespace TestProject1
             Assert.That(_context.Registrations.Count(), Is.EqualTo(1));
         }
 
-        [TestCase("shor", "123", "123", "Ëîãèí äîëæåí ñîäåðæàòü ìèíèìóì 5 ñèìâîëîâ.")]
+        [TestCase("shor", "123", "123", "Логин должен содержать минимум 5 символов.")]
         public void RegistrationUser_InvalidData(string? login, string? pass, string? passR, string errorM)
         {
             // Arrange
