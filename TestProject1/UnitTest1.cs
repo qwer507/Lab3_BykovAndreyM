@@ -19,7 +19,7 @@ namespace TestProject1
         [SetUp]
         public void SetUp()
         {
-            // Используем уникальное имя БД для каждого теста
+            // Г€Г±ГЇГ®Г«ГјГ§ГіГҐГ¬ ГіГ­ГЁГЄГ Г«ГјГ­Г®ГҐ ГЁГ¬Гї ГЃГ„ Г¤Г«Гї ГЄГ Г¦Г¤Г®ГЈГ® ГІГҐГ±ГІГ 
             var options = new DbContextOptionsBuilder<Bykov2307a2TechContext>()
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
@@ -36,7 +36,7 @@ namespace TestProject1
             _context.Dispose();
         }
 
-        [TestCase("qwertyu", "Йфываывф1!", "Йфываывф1!")]
+        [TestCase("qwertyu", "Г‰ГґГ»ГўГ Г»ГўГґ1!", "Г‰ГґГ»ГўГ Г»ГўГґ1!")]
         public void RegistrationUser_ValidData(string? login, string? pass, string? passR)
         {
             // Arrange
@@ -54,7 +54,7 @@ namespace TestProject1
             Assert.IsNull(savedUser.RErrorMessage);
         }
 
-        [TestCase("qwertyu", "Йфываывф1!", "Йфываывф1!", true, null)]
+        [TestCase("qwertyu", "Г‰ГґГ»ГўГ Г»ГўГґ1!", "Г‰ГґГ»ГўГ Г»ГўГґ1!", true, null)]
         public void RegistrationUser_ExistingLogin(string? login, string? pass, string? passR, bool rst, string? errorM)
         {
             // Arrange
@@ -80,7 +80,7 @@ namespace TestProject1
             Assert.That(_context.Registrations.Count(), Is.EqualTo(1));
         }
 
-        [TestCase("shor", "123", "123", "Логин должен содержать минимум 5 символов.")]
+        [TestCase("shor", "123", "123", "Г‹Г®ГЈГЁГ­ Г¤Г®Г«Г¦ГҐГ­ Г±Г®Г¤ГҐГ°Г¦Г ГІГј Г¬ГЁГ­ГЁГ¬ГіГ¬ 5 Г±ГЁГ¬ГўГ®Г«Г®Гў.")]
         public void RegistrationUser_InvalidData(string? login, string? pass, string? passR, string errorM)
         {
             // Arrange
