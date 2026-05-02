@@ -1,4 +1,5 @@
-﻿using ConsoleApp1.Models;
+﻿using ConsoleApp1.Interfaces;
+using ConsoleApp1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.Classes
 {
-    public class DbInteraction
+    public class DbInteraction : IDbInteraction
     {
         Bykov2307a2TechContext _context = new Bykov2307a2TechContext();
         public Registration? GetRegInfo(string? login, string? password, string? repeatPassword)

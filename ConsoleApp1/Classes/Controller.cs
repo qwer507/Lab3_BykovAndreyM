@@ -7,25 +7,30 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.Classes
 {
-    public static class Controller
+    public class Controller
     {
-        public static bool RegistrationUser()
+        DbInteraction _dbInteraction;
+        UserInteraction _userInteraction;
+        OtherProgramInteraction _otherProgramInteraction;
+        public Controller()
         {
-            DbInteraction dbInteraction = new DbInteraction();
-            UserInteraction userInteraction = new UserInteraction();
-            OtherProgramInteraction otherProgramInteraction = new OtherProgramInteraction();
-
-            List<String?> inputData = userInteraction.GetRegData();
-            Registration? newRegInfo = dbInteraction.GetRegInfo(inputData[0], inputData[1], inputData[2]);
+            _dbInteraction = new DbInteraction();
+            _userInteraction = new UserInteraction();
+            _otherProgramInteraction = new OtherProgramInteraction();
+        }
+        public bool RegistrationUser()
+        {
+            List<String?> inputData = _userInteraction.GetRegData();
+            Registration? newRegInfo = _dbInteraction.GetRegInfo(inputData[0], inputData[1], inputData[2]);
             if (newRegInfo == null)
             {
                 newRegInfo = RegistrationNewUser.RegisterUser(inputData[0], inputData[1], inputData[2]);
                 // сохраняем новые данные о регистрации
-                dbInteraction.AddNewRegInfo(newRegInfo);
+                _dbInteraction.AddNewRegInfo(newRegInfo);
             }
 
             // отправка данных
-            otherProgramInteraction.SendRegInfoToEmail(newRegInfo.RErrorMessage);
+            _otherProgramInteraction.SendRegInfoToErrorService(newRegInfo.RErrorMessage);
 
             return newRegInfo.RResult;
         }

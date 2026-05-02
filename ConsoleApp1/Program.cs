@@ -12,8 +12,8 @@ namespace ConsoleApp1
                 .WriteTo.Console(outputTemplate: template)
                 .WriteTo.File("logs/file_.txt", outputTemplate: template)
                 .CreateLogger();
-
-            Controller.RegistrationUser();
+            Controller controller = new Controller();
+            controller.RegistrationUser();
         }
     }
 }
