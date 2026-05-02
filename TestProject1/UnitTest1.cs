@@ -1,4 +1,4 @@
-using ConsoleApp1.Classes;
+п»їusing ConsoleApp1.Classes;
 using ConsoleApp1.Models;
 using ConsoleApp1.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +19,7 @@ namespace TestProject1
         [SetUp]
         public void SetUp()
         {
-            // Используем уникальное имя БД для каждого теста
+            // РСЃРїРѕР»СЊР·СѓРµРј СѓРЅРёРєР°Р»СЊРЅРѕРµ РёРјСЏ Р‘Р” РґР»СЏ РєР°Р¶РґРѕРіРѕ С‚РµСЃС‚Р°
             var options = new DbContextOptionsBuilder<Bykov2307a2TechContext>()
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
@@ -36,7 +36,7 @@ namespace TestProject1
             _context.Dispose();
         }
 
-        [TestCase("qwertyu", "Йфываывф1!", "Йфываывф1!")]
+        [TestCase("qwertyu", "Р™С„С‹РІР°С‹РІС„1!", "Р™С„С‹РІР°С‹РІС„1!")]
         public void RegistrationUser_ValidData(string? login, string? pass, string? passR)
         {
             // Arrange
@@ -54,7 +54,7 @@ namespace TestProject1
             Assert.IsNull(savedUser.RErrorMessage);
         }
 
-        [TestCase("qwertyu", "Йфываывф1!", "Йфываывф1!", true, null)]
+        [TestCase("qwertyu", "Р™С„С‹РІР°С‹РІС„1!", "Р™С„С‹РІР°С‹РІС„1!", true, null)]
         public void RegistrationUser_ExistingLogin(string? login, string? pass, string? passR, bool rst, string? errorM)
         {
             // Arrange
@@ -80,7 +80,7 @@ namespace TestProject1
             Assert.That(_context.Registrations.Count(), Is.EqualTo(1));
         }
 
-        [TestCase("shor", "123", "123", "Логин должен содержать минимум 5 символов.")]
+        [TestCase("shor", "123", "123", "Р›РѕРіРёРЅ РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ РјРёРЅРёРјСѓРј 5 СЃРёРјРІРѕР»РѕРІ.")]
         public void RegistrationUser_InvalidData(string? login, string? pass, string? passR, string errorM)
         {
             // Arrange
