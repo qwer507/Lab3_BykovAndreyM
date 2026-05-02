@@ -1,4 +1,5 @@
-﻿using ConsoleApp1.Models;
+﻿using ConsoleApp1.Interfaces;
+using ConsoleApp1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,20 @@ namespace ConsoleApp1.Classes
 {
     public class Controller
     {
-        DbInteraction _dbInteraction;
-        UserInteraction _userInteraction;
-        OtherProgramInteraction _otherProgramInteraction;
+        private DbInteraction _dbInteraction;
+        private IUserInteraction _userInteraction;
+        private IOtherProgramInteraction _otherProgramInteraction;
         public Controller()
         {
             _dbInteraction = new DbInteraction();
             _userInteraction = new UserInteraction();
             _otherProgramInteraction = new OtherProgramInteraction();
+        }
+        public Controller(DbInteraction dbInteraction, IUserInteraction userInteraction, IOtherProgramInteraction otherProgramInteraction)
+        {
+            _dbInteraction = dbInteraction;
+            _userInteraction = userInteraction;
+            _otherProgramInteraction = otherProgramInteraction;
         }
         public bool RegistrationUser()
         {

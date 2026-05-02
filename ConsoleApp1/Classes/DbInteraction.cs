@@ -8,9 +8,19 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.Classes
 {
-    public class DbInteraction : IDbInteraction
+    public class DbInteraction
     {
-        Bykov2307a2TechContext _context = new Bykov2307a2TechContext();
+        private Bykov2307a2TechContext _context;
+        public DbInteraction()
+        {
+            _context = new Bykov2307a2TechContext();
+        }
+
+        public DbInteraction(Bykov2307a2TechContext context)
+        {
+            _context = context;
+        }
+
         public Registration? GetRegInfo(string? login, string? password, string? repeatPassword)
         {
             List<Registration> allRegInfo = _context.Registrations.ToList();

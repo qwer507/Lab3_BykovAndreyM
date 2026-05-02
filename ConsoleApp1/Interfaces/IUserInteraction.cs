@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.Interfaces
 {
-    interface IUserInteraction
+    public interface IUserInteraction
     {
         List<string?> GetRegData();
     }

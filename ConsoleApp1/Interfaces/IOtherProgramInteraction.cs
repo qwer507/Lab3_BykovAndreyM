@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.Interfaces
 {
-    interface IOtherProgramInteraction
+    public interface IOtherProgramInteraction
     {
         void SendRegInfoToErrorService(string? errorMessage);
     }
