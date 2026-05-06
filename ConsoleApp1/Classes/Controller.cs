@@ -28,7 +28,7 @@ namespace ConsoleApp1.Classes
         public bool RegistrationUser()
         {
             List<String?> inputData = _userInteraction.GetRegData();
-            Registration? newRegInfo = _dbInteraction.GetRegInfo(inputData[0], inputData[1], inputData[2]);
+            Registration? newRegInfo = _dbInteraction.GetRegInfo(inputData[0], PasswordHasher.MaskPassword(inputData[1]), PasswordHasher.MaskPassword(inputData[2]));
             if (newRegInfo == null)
             {
                 newRegInfo = RegistrationNewUser.RegisterUser(inputData[0], inputData[1], inputData[2]);

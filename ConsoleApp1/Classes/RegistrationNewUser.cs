@@ -19,8 +19,8 @@ namespace ConsoleApp1.Classes
 
             Registration newReg = new Registration() {
                 RLogin = login,
-                RPassword = password,
-                RRepeatPassword = passwordRepeat,
+                RPassword = maskedPassword,
+                RRepeatPassword = maskedPasswordRepeat,
                 RResult = false,
                 RErrorMessage = error
             };
